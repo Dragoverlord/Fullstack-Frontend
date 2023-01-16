@@ -120,6 +120,8 @@ function NavbarCustom() {
           >
             LOGO
           </Typography>
+
+          <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -136,7 +138,7 @@ function NavbarCustom() {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
-                  sx={{ width: "150px", height: "150px" }}
+                  sx={{ width: "100px", height: "100px" }}
                   alt="Remy Sharp"
                   src={logoUser}
                 />
