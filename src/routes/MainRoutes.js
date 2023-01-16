@@ -1,7 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Contact from "../components/contact/Contact";
 import Error from "../components/Error/Error";
 import MainPage from "../components/MainPage/MainPage";
+import Rules from "../components/OurRules/Rules";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -11,9 +13,19 @@ const MainRoutes = () => {
       id: 1,
     },
     {
+      link: "/rules",
+      element: <Rules />,
+      id: 3,
+    },
+    {
+      link: "/contact",
+      element: <Contact />,
+      id: 4,
+    },
+    {
       link: "*",
       element: <Error />,
-      id: 2,
+      id: 4,
     },
     //   {
     //     link: "*",
