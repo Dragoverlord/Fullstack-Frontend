@@ -6,11 +6,9 @@ import MainRoutes from "./routes/MainRoutes";
 
 const App = () => {
   return (
-    <div>
-      <NavbarCustom />
+    <>
       <MainRoutes />
-      <Footer />
-    </div>
+    </>
   );
 };
 
