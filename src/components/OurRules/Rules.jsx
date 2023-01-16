@@ -3,7 +3,9 @@ import React from 'react';
 const Rules = () => {
     return (
         <div>
-            lklknjknjlnjknjknjknjkn
+           <h3>
+            ;lskfmglkdfkmgsljgnj
+            </h3> 
         </div>
     );
 };

@@ -17,7 +17,7 @@ body {
     filter: grayscale(100%);
     transition: 5s;
 }
-h2 {
+.h2error {
   color: white;
   text-align: center;
   line-height: 40vh;
@@ -29,7 +29,7 @@ h2 {
   transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
 
-h2:hover {
+.h2error:hover {
   color: black;
   width: 200px;
   height: 200px;

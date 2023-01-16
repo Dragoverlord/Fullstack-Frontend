@@ -13,7 +13,6 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import "../navbar/Navbar.css";
 import Logo from "../storage/logo.svg";
-import Rules from "../OurRules/Rules";
 import { Link } from "react-router-dom";
 
 const pages = ["RULES"];
@@ -62,7 +61,7 @@ function NavbarCustom() {
               letterSpacing: "3rem",
               color: "inherit",
               textDecoration: "none",
-            }}
+            }} className="logoName"
           >
             CERBER
           </Typography>
@@ -94,7 +93,7 @@ function NavbarCustom() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
-              }}
+              }} className="pagesadapt"
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
