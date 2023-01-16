@@ -1,20 +1,16 @@
-
-.css-13kaxyk-MuiTypography-root{
+.css-13kaxyk-MuiTypography-root {
     margin-left: -10% !important;
 }
-.logo{
-    width: 35%;
-    height: 45%;
-    margin-left: 75%;
+
+.logo {
+    width: 250px;
+    height: 250px;
 }
-@media(max-width: 1440px) {
-   .logoName{
-    margin-left: -1% !important;
-   }
-  
-}
-@media(max-width: 1024px) {
-    .pagesadapt{
-        margin-left: 150% !important;
-       }
+
+
+@media all and (max-width: 900px) {
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
 }

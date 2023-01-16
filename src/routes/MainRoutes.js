@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Contact from "../components/contact/Contact";
 import Error from "../components/Error/Error";
+import HomePage from "../components/HomePage/HomePage";
 import MainPage from "../components/MainPage/MainPage";
 import Rules from "../components/OurRules/Rules";
 
@@ -27,11 +28,11 @@ const MainRoutes = () => {
       element: <Error />,
       id: 4,
     },
-    //   {
-    //     link: "*",
-    //     element: <NotFoundPage />,
-    //     id: 2,
-    //   },
+    {
+      link: "/rules",
+      element: <HomePage />,
+      id: 3,
+    },
   ];
 
   const PRIVATE_ROUTES = [];

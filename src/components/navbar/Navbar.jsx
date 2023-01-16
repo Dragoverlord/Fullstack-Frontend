@@ -57,7 +57,7 @@ function NavbarCustom() {
               // mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
-              fontWeight: 800,
+              fontWeight: 700,
               letterSpacing: "3rem",
               color: "inherit",
               textDecoration: "none",
@@ -102,8 +102,7 @@ function NavbarCustom() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          {/* <Box sx={{ flexGrow: 1 }}/> */}
+          <Box sx={{ flexGrow: 1 }}/>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Link  to="/rules">
@@ -121,11 +120,6 @@ function NavbarCustom() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {/* <Avatar
-                  sx={{ width: "30%", height: "30%" }}
-                  alt="Remy Sharp"
-                  src={logoUser}
-                /> */}
                 <img className="logo" src={Logo} alt="" />
               </IconButton>
             </Tooltip>
