@@ -1,4 +1,4 @@
-body {
+.back {
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -17,7 +17,7 @@ body {
     filter: grayscale(100%);
     transition: 5s;
 }
-h2 {
+.back h2 {
   color: white;
   text-align: center;
   line-height: 40vh;
@@ -29,7 +29,7 @@ h2 {
   transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
 
-h2:hover {
+.back h2:hover {
   color: black;
   width: 200px;
   height: 200px;
@@ -45,7 +45,7 @@ h2:hover {
 }
 }
 @media(max-width: 768px) {
-    h2{
+  .back h2{
         margin-top: 5%;
         line-height: 30vh;
         letter-spacing: 2vw;
@@ -53,7 +53,7 @@ h2:hover {
     }
 }
 @media(max-width: 425px) {
-    h2{
+  .back h2{
         margin-top: 25%;
         /* line-height: -5vh; */
         font-size: 7vw; 
