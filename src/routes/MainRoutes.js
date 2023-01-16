@@ -9,11 +9,6 @@ const MainRoutes = () => {
         element: <HomePage />,
         id: 1,
       },
-    //   {
-    //     link: "*",
-    //     element: <NotFoundPage />,
-    //     id: 2,
-    //   },
     ];
   
     const PRIVATE_ROUTES = [
