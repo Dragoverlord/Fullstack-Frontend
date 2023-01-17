@@ -10,14 +10,12 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import "../navbar/Navbar.css";
 import Logo from "../storage/logo.svg";
-import Rules from "../OurRules/Rules";
 import { Link } from "react-router-dom";
 
-const pages = ["RULES"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["DANGEROUS"];
+const settings = ["Profile", "Account", "Logout"];
 
 function NavbarCustom() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -63,6 +61,7 @@ function NavbarCustom() {
               color: "inherit",
               textDecoration: "none",
             }}
+            className="logoName"
           >
             CERBER
           </Typography>
@@ -95,27 +94,36 @@ function NavbarCustom() {
               sx={{
                 display: { xs: "block", md: "none" },
               }}
+              className="pagesadapt"
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link to="/rules"><Typography textAlign="center">{page}</Typography></Link>
+                  <Link to="/dangerous">
+                    <Typography textAlign="center">{page}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1 }}/>
+          <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Link  to="/rules">
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
+              <Link to="/dangerous">
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
               </Link>
             ))}
+
+            <Link to="/homepage"> 
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                Main
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
