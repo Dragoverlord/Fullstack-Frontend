@@ -1,11 +1,14 @@
 import React from "react";
 import "./App.css";
+import AuthContextProvider from "./context/authContext";
 import MainRoutes from "./routes/MainRoutes";
 
 const App = () => {
   return (
     <>
-      <MainRoutes />
+      <AuthContextProvider>
+        <MainRoutes />
+      </AuthContextProvider>
     </>
   );
 };

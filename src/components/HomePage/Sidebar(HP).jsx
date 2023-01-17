@@ -1,11 +1,11 @@
 import React from "react";
-import $ from 'jquery';
-import "./Sidebar.css"
+import $ from "jquery";
+import "./Sidebar.css";
 import RoomChat from "./RoomChat";
 import { useNavigate } from "react-router";
 
 const Sidebar = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   $(document).ready(function () {
     setInterval(function () {
       $.ajax({
@@ -33,22 +33,22 @@ const Sidebar = () => {
     }, 1000);
   });
 
-  $(document).on('submit','#post-form',function(e){
+  $(document).on("submit", "#post-form", function (e) {
     e.preventDefault();
 
     $.ajax({
-      type:'POST',
-      url:'/chat/send',
-      data:{
-          room_id:$('#room_id').val(),
-          message:$('#message').val(),
-        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      type: "POST",
+      url: "/chat/send",
+      data: {
+        room_id: $("#room_id").val(),
+        message: $("#message").val(),
+        csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
       },
-      success: function(data){
-         //alert(data)
-      }
+      success: function (data) {
+        //alert(data)
+      },
     });
-    document.getElementById('message').value = ''
+    document.getElementById("message").value = "";
   });
 
   return (
@@ -61,9 +61,9 @@ const Sidebar = () => {
           {/* {csrf_token} */}
           <label>Room Name</label>
           <input type="text" name="room_name" id="room_name" width="100px" />
-          <input type="submit" value="Enter Room"/>
+          <input type="submit" value="Enter Room" />
         </form>
-        <RoomChat/>
+        <RoomChat />
       </div>
     </div>
   );

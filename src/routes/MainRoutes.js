@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Auth from "../components/Auth/Auth";
+import Login from "../components/Auth/Login";
+import Register from "../components/Auth/Register";
 import Contact from "../components/contact/Contact";
 import Error from "../components/Error/Error";
 import HomePage from "../components/HomePage/HomePage";
-import RoomChat from "../components/HomePage/RoomChat";
 import MainPage from "../components/MainPage/MainPage";
 import Dangerous from "../components/OurRules/Dangerous";
 
@@ -22,7 +22,7 @@ const MainRoutes = () => {
     },
     {
       link: "/auth",
-      element: <Auth />,
+      element: <Register />,
       id: 4,
     },
     {
@@ -36,9 +36,14 @@ const MainRoutes = () => {
       id: 6,
     },
     {
+      link: "/login",
+      element: <Login />,
+      id: 7,
+    },
+    {
       link: "*",
       element: <Error />,
-      id: 7,
+      id: 8,
     },
   ];
 
