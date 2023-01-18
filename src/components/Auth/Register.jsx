@@ -3,8 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -23,9 +21,9 @@ function Copyright(props) {
       align="center"
       {...props}
     >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      {"WebSide © "}
+      <Link sx={{textDecoration: "none"}} color="inherit" href="https://makers.courses/houses/KvEVKzaW7mTDQ4bkAiaR">
+        C E R B E R
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -124,26 +122,26 @@ export default function Register() {
             <Button
               fullWidth
               variant="outlined"
-              sx={{ mt: 3, mb: 2 , bgcolor: "darkred" , color: "white"}}
+              sx={{ mt: 3, mb: 2, bgcolor: "darkred", color: "white" }}
               onClick={handleSave}
             >
               Register
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" sx={{color: "white"}} variant="body2">
+                <Link href="#" sx={{ color: "white" }} variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/login" sx={{color: "white"}} variant="body2">
+                <Link href="/loginpage" sx={{ color: "white" }} variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 8, mb: 4, color: "white" }} />
       </Container>
     </ThemeProvider>
   );

@@ -124,6 +124,11 @@ function NavbarCustom() {
                 Main
               </Button>
             </Link>
+            <Link to="/products"> 
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                Product
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

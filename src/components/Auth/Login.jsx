@@ -3,8 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -24,8 +22,8 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link sx={{textDecoration: "none"}} color="inherit" href="https://makers.courses/houses/KvEVKzaW7mTDQ4bkAiaR">
+        C E R B E R
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -56,7 +54,11 @@ export default function Login() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        maxWidth="xs"
+        sx={{ bgcolor: "black", color: "white" }}
+      >
         {error ? <Alert severity="error">{error}</Alert> : null}
         <CssBaseline />
         <Box
@@ -67,14 +69,15 @@ export default function Login() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
+          <Avatar sx={{ m: 1, bgcolor: "black" }}>
+            <LockOutlinedIcon sx={{ color: "darkred" }} />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign In
           </Typography>
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
+              sx={{ bgcolor: "white" }}
               margin="normal"
               required
               fullWidth
@@ -87,6 +90,7 @@ export default function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
+              sx={{ bgcolor: "white" }}
               margin="normal"
               required
               fullWidth
@@ -98,34 +102,29 @@ export default function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2 , bgcolor: "darkred" , color: "white"}}
               onClick={handleSave}
             >
               Sign in
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href="#" sx={{color: "white"}} variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/" sx={{color: "white"}} variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright  sx={{ mt: 8, mb: 4 , color: "white"}} />
       </Container>
     </ThemeProvider>
   );

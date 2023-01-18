@@ -1,12 +1,14 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Login from "../components/Auth/Login";
 import Register from "../components/Auth/Register";
 import Contact from "../components/contact/Contact";
 import Error from "../components/Error/Error";
 import HomePage from "../components/HomePage/HomePage";
 import MainPage from "../components/MainPage/MainPage";
 import Dangerous from "../components/OurRules/Dangerous";
+import ProductDetails from "../components/Products/ProductDetails";
+import LoginPage from "../pages/LoginPage";
+import ProductPage from "../pages/ProductPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -36,14 +38,24 @@ const MainRoutes = () => {
       id: 6,
     },
     {
-      link: "/login",
-      element: <Login />,
+      link: "/loginpage",
+      element: <LoginPage />,
       id: 7,
+    },
+    {
+      link: "/products",
+      element: <ProductPage />,
+      id: 8,
+    },
+    {
+      link: "/products/:id",
+      element: <ProductDetails />,
+      id: 9,
     },
     {
       link: "*",
       element: <Error />,
-      id: 8,
+      id: 10,
     },
   ];
 
