@@ -53,7 +53,7 @@ const ProductsList = () => {
           color="primary"
           count={pages}
           page={currentPage}
-          sx={{ bgcolor: "white", width: "304px", margin: "auto",  borderRadius: "20px" }}
+          sx={{ bgcolor: "white", width: "304px", margin: "auto",}}
           onChange={(e, page) => setCurrentPage(page)}
         />
       </Box>

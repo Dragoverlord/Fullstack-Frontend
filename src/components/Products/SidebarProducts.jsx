@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../context/productContext";
-
+import "../Products/SidebarProducts.css";
 const SidebarProducts = () => {
   const { fetchByParams } = useProducts();
 
@@ -29,12 +29,19 @@ const SidebarProducts = () => {
   }, [search]);
 
   return (
-    <Grid sx={{bgcolor: "white", margin: "auto 40px", borderRadius: "20px"}}>
-      <Paper sx={{display:"flex" , flexDirection: "column" , margin: "20px" , padding: "10px"}}>
+    <Grid sx={{ margin: "auto 40px" }}>
+      <Paper
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          margin: "20px",
+          padding: "10px",
+        }}
+      >
         <TextField
+          style={{ backgroundColor: "white" }}
           fullWidth
           id="input-with-icon-textfield"
-          label="Search..."
           variant="outlined"
           value={search}
           onChange={(e) => {
@@ -49,56 +56,85 @@ const SidebarProducts = () => {
           }}
         />
         <FormControl>
-          <FormLabel>Categories</FormLabel>
+          <FormLabel style={{ color: "white" }}>Categories</FormLabel>
           <RadioGroup onChange={(e) => fetchByParams("type", e.target.value)}>
-            <FormControlLabel value="all" control={<Radio />} label="Все" />
             <FormControlLabel
-              value="Бестселлеры"
-              control={<Radio />}
-              label="Бестселлеры"
+              style={{ color: "white" }}
+              value="all"
+              control={<Radio style={{ color: "white" }} />}
+              label="ALL"
             />
             <FormControlLabel
-              value="Фантастика"
-              control={<Radio />}
-              label="Фантастика"
+              style={{ color: "white" }}
+              value="DRUGS"
+              control={<Radio style={{ color: "white" }} />}
+              label="DRUGS"
             />
-            <FormControlLabel value="Ужасы" control={<Radio />} label="Ужасы" />
+            <FormControlLabel
+              style={{ color: "white" }}
+              value="CONTRACT KILLINGS"
+              control={<Radio style={{ color: "white" }} />}
+              label="CONTRACT KILLINGS"
+            />
+            <FormControlLabel
+              style={{ color: "white" }}
+              value="GUNS"
+              control={<Radio style={{ color: "white" }} />}
+              label="GUNS"
+            />
+            <FormControlLabel
+              style={{ color: "white" }}
+              value="HACK"
+              control={<Radio style={{ color: "white" }} />}
+              label="HACK"
+            />
           </RadioGroup>
         </FormControl>
         <FormControl>
-          <FormLabel>Price</FormLabel>
+          <FormLabel style={{ color: "white" }}>Price</FormLabel>
           <RadioGroup
             onChange={(e) => fetchByParams("price_lte", e.target.value)}
           >
-            <FormControlLabel value="all" control={<Radio />} label="Все" />
             <FormControlLabel
+              style={{ color: "white" }}
+              value="all"
+              control={<Radio style={{ color: "white" }} />}
+              label="ALL"
+            />
+            <FormControlLabel
+              style={{ color: "white" }}
               value={100}
-              control={<Radio />}
+              control={<Radio style={{ color: "white" }} />}
               label="99 $"
             />
             <FormControlLabel
+              style={{ color: "white" }}
               value={200}
-              control={<Radio />}
+              control={<Radio style={{ color: "white" }} />}
               label="199 $"
             />
             <FormControlLabel
+              style={{ color: "white" }}
               value={300}
-              control={<Radio />}
+              control={<Radio style={{ color: "white" }} />}
               label="299 $"
             />
             <FormControlLabel
+              style={{ color: "white" }}
               value={500}
-              control={<Radio />}
+              control={<Radio style={{ color: "white" }} />}
               label="499 $"
             />
             <FormControlLabel
+              style={{ color: "white" }}
               value={1000}
-              control={<Radio />}
+              control={<Radio style={{ color: "white" }} />}
               label="999 $"
             />
             <FormControlLabel
+              style={{ color: "white" }}
               value={2100}
-              control={<Radio />}
+              control={<Radio style={{ color: "white" }} />}
               label="2100 $"
             />
           </RadioGroup>

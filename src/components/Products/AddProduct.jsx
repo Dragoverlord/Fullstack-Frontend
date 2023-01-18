@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/authContext";
 import { useProducts } from "../../context/productContext";
-
+import "../Products/AddProduct.css"
 const AddProduct = () => {
   const { user } = useAuth();
   const { getCategories, categories, addProduct } = useProducts();
@@ -67,11 +67,10 @@ const AddProduct = () => {
             alignItems: "center",
             bgcolor: "white",
             color: "black",
-            borderRadius: "20px",
-            padding: "20px"
+            padding: "20px",
           }}
         >
-          <Typography>Add new product</Typography>
+          <Typography style={{color: "white"}}>Add new product</Typography>
           <TextField
             label="Title"
             fullWidth
@@ -103,12 +102,13 @@ const AddProduct = () => {
             type="file"
             name="image"
             onChange={handleInp}
-            sx={{ bgcolor: "white", color: "black" }}
+            style={{  color: "white" }}
           />
           <FormControl fullWidth>
             <InputLabel
-              sx={{ bgcolor: "white", color: "black" }}
+              // sx={{ bgcolor: "white", color: "black" }}
               id="select-label"
+              style={{  backgroundColor: "black",color: "white" }}
             >
               Category
             </InputLabel>
@@ -117,7 +117,7 @@ const AddProduct = () => {
               labelId="select-label"
               name="category"
               onChange={handleInp}
-              sx={{ bgcolor: "white", color: "black" }}
+              style={{  backgroundColor: "black",color: "white" }}
             >
               {categories?.map((item) => (
                 <MenuItem
