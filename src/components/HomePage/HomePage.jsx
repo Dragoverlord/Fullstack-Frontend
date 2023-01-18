@@ -5,6 +5,9 @@ import Backs from "../storage/backs.jpg";
 import NavbarCustom from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 
+
+
+
 const HomePage = () => {
   return (
     <Box sx={{padding: "0px" , margin: "0px"}}>
