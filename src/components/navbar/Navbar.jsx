@@ -15,7 +15,11 @@ import Logo from "../storage/logo.svg";
 import { Link } from "react-router-dom";
 
 const pages = ["DANGEROUS"];
-const settings = ["Profile", "Account", "Logout"];
+const settings = [
+  { name: "Profile", link: "/profile", id: 1 },
+  { name: "Account", link: "/", id: 2 },
+  { name: "Logout", link: "#", id: 3 },
+];
 
 function NavbarCustom() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -119,12 +123,12 @@ function NavbarCustom() {
               </Link>
             ))}
 
-            <Link to="/homepage"> 
+            <Link to="/homepage">
               <Button sx={{ my: 2, color: "white", display: "block" }}>
                 Main
               </Button>
             </Link>
-            <Link to="/products"> 
+            <Link to="/products">
               <Button sx={{ my: 2, color: "white", display: "block" }}>
                 Product
               </Button>
@@ -154,8 +158,14 @@ function NavbarCustom() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+                  <Link
+                    style={{ color: "black", textDecoration: "none" }}
+                    to={setting.link}
+                    textAlign="center"
+                  >
+                    {setting.name}
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>

@@ -20,8 +20,8 @@ export default function ProductCard({ item }) {
 
   console.log(item);
   return (
-    <Card sx={{ width: 345, margin: "20px", borderRadius: "20px", padding: "5px" }}>
-      <CardMedia sx={{ height: 345 , borderRadius: "20px" }} image={item.image} title={item.title} />
+    <Card sx={{ width: 345, margin: "20px", padding: "5px" }}>
+      <CardMedia sx={{ height: 345 }} image={item.image} title={item.title} />
       <CardContent onClick={() => navigate(`/products/${item.id}`)}>
         <Typography gutterBottom variant="h5" component="div">
           {item.title}

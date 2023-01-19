@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const authContext = createContext();
 export const useAuth = () => useContext(authContext);
 
-const API = "http://34.173.115.25/api/v1/account/";
+const API = "http://34.122.138.182/account/";
 
 // http://34.122.138.182/docs/
 
@@ -21,6 +21,7 @@ const AuthContextProvider = ({ children }) => {
       console.log(res);
     //   navigate("/login");
     } catch (error) {
+      console.log(formData);
       console.log(Object.values(error.response.data).flat(2));
       console.log(error);
       setError(Object.values(error.response.data).flat(2));

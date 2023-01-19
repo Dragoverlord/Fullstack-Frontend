@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../context/productContext";
@@ -29,7 +29,7 @@ const SidebarProducts = () => {
   }, [search]);
 
   return (
-    <Grid sx={{bgcolor: "white", margin: "auto 40px", borderRadius: "20px"}}>
+    <Grid sx={{bgcolor: "white", margin: "auto 40px" }}>
       <Paper sx={{display:"flex" , flexDirection: "column" , margin: "20px" , padding: "10px"}}>
         <TextField
           fullWidth

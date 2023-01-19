@@ -52,7 +52,7 @@ export default function Register() {
     formData.append("password_confirm", passwordConfirm);
 
     // console.log(email, password, passwordConfirm);
-
+    console.log(formData);
     register(formData);
   }
 

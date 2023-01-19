@@ -67,7 +67,6 @@ const AddProduct = () => {
             alignItems: "center",
             bgcolor: "white",
             color: "black",
-            borderRadius: "20px",
             padding: "20px"
           }}
         >

@@ -7,6 +7,7 @@ import HomePage from "../components/HomePage/HomePage";
 import MainPage from "../components/MainPage/MainPage";
 import Dangerous from "../components/OurRules/Dangerous";
 import ProductDetails from "../components/Products/ProductDetails";
+import Profile from "../components/Profile/Profile";
 import LoginPage from "../pages/LoginPage";
 import ProductPage from "../pages/ProductPage";
 
@@ -53,9 +54,14 @@ const MainRoutes = () => {
       id: 9,
     },
     {
+      link: "/profile",
+      element: <Profile />,
+      id: 10,
+    },
+    {
       link: "*",
       element: <Error />,
-      id: 10,
+      id: 11,
     },
   ];
 
