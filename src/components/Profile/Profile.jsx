@@ -4,7 +4,7 @@ import Footer from "../footer/Footer";
 import NavbarCustom from "../navbar/Navbar";
 import "../MainPage/MainPage.css";
 import Backs from "../storage/backs.jpg";
-import { Avatar, Typography } from "@mui/material";
+import { Avatar, Button, TextField, Typography } from "@mui/material";
 
 const Profile = () => {
   return (
@@ -69,17 +69,43 @@ const Profile = () => {
             backgroundColor: "black",
             color: "white",
             width: "1000px",
-            height: "1400px",
+            height: "1100px",
             borderRadius: "10px",
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
-            justifyContent: "space-around",
             padding: "0 40px",
             margin: "80px 40px",
           }}
         >
-          <Box></Box>
+          <Box
+            sx={{
+              width: "40vw",
+              margin: "0 auto",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "black",
+            }}
+          >
+            <Typography style={{ color: "white", margin: "50px auto" }}>Profile Option</Typography>
+            <input type="file" name="Avatar" style={{ color: "white", margin: "50px auto"  }} />
+            <TextField
+              label="Username"
+              fullWidth
+              variant="filled"
+              sx={{ m: 1, bgcolor: "white", color: "black", margin: "50px auto" , borderRadius: "10px", }}
+              name="username"
+            />
+            <Button
+              sx={{ m: 1, bgcolor: "darkred", color: "white" , margin: "50px auto", borderRadius: "10px", }}
+              variant="outlined"
+              fullWidth
+              size="large"
+            >
+              Save option
+            </Button>
+          </Box>
         </Box>
       </Box>
       <Footer />

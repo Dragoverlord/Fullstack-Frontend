@@ -10,6 +10,7 @@ import { useProducts } from "../../context/productContext";
 import { useAuth } from "../../context/authContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
+import "../Products/ProductCard.css"
 
 export default function ProductCard({ item }) {
   const { deleteProduct, toggleLike, getOneProduct } = useProducts();
@@ -20,23 +21,23 @@ export default function ProductCard({ item }) {
 
   console.log(item);
   return (
-    <Card sx={{ width: 345, margin: "20px", padding: "5px" }}>
+    <Card sx={{ width: 345, margin: "20px",  padding: "5px" }}>
       <CardMedia sx={{ height: 345 }} image={item.image} title={item.title} />
       <CardContent onClick={() => navigate(`/products/${item.id}`)}>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography style={{ color: "white" }} gutterBottom variant="h5" component="div">
           {item.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography style={{ color: "white" }} variant="body2" color="text.secondary">
           {item.description}
         </Typography>
-        <Typography variant="caption" color="text.secondary">
+        <Typography style={{ color: "white" }} variant="caption" color="text.secondary">
           {item.price}
         </Typography>
       </CardContent>
       <CardActions>
         {item.author == user ? (
           <>
-            <Button onClick={() => deleteProduct(item.id)} size="small">
+            <Button style={{ color: "white" }} onClick={() => deleteProduct(item.id)} size="small">
               Delete
             </Button>
           </>
@@ -50,7 +51,7 @@ export default function ProductCard({ item }) {
         {item.likes}
         {isLiked ? (
           <>
-            <FavoriteIcon
+            <FavoriteIcon 
               color="error"
               onClick={() => {
                 toggleLike(item.id);

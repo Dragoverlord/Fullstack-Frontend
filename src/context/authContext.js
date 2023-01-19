@@ -21,7 +21,7 @@ const AuthContextProvider = ({ children }) => {
       console.log(res);
     //   navigate("/login");
     } catch (error) {
-      console.log(formData);
+      console.log(error);
       console.log(Object.values(error.response.data).flat(2));
       console.log(error);
       setError(Object.values(error.response.data).flat(2));

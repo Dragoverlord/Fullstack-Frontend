@@ -111,7 +111,7 @@ export default function Register() {
               margin="normal"
               required
               fullWidth
-              name="password-confirm"
+              name="password_confirm"
               label="Password confirm"
               type="password"
               id="password-confirm"
