@@ -58,15 +58,17 @@ const AddProduct = () => {
     <>
       {user !== null ? (
         <Box
+        className="addproduct"
           sx={{
-            width: "40vw",
+            width: "50%",
+            height: "100%",
             margin: "50px auto",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            bgcolor: "white",
-            color: "black",
+            bgcolor: "black",
+            color: "white",
             padding: "20px",
           }}
         >

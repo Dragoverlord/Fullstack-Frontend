@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Register from "../components/Auth/Register";
 import Contact from "../components/contact/Contact";
 import Error from "../components/Error/Error";
@@ -12,6 +12,8 @@ import LoginPage from "../pages/LoginPage";
 import ProductPage from "../pages/ProductPage";
 
 const MainRoutes = () => {
+  const username = localStorage.getItem("username")
+
   const PUBLIC_ROUTES = [
     {
       link: "/",
@@ -23,6 +25,19 @@ const MainRoutes = () => {
       element: <Dangerous />,
       id: 3,
     },
+    {
+      link: "/loginpage",
+      element: <LoginPage />,
+      id: 7,
+    },
+    {
+      link: "*",
+      element: <Error />,
+      id: 11,
+    },
+  ];
+
+  const PRIVATE_ROUTES = [
     {
       link: "/auth",
       element: <Register />,
@@ -38,11 +53,7 @@ const MainRoutes = () => {
       element: <HomePage />,
       id: 6,
     },
-    {
-      link: "/loginpage",
-      element: <LoginPage />,
-      id: 7,
-    },
+
     {
       link: "/products",
       element: <ProductPage />,
@@ -58,21 +69,29 @@ const MainRoutes = () => {
       element: <Profile />,
       id: 10,
     },
-    {
-      link: "*",
-      element: <Error />,
-      id: 11,
-    },
   ];
-
-  const PRIVATE_ROUTES = [];
 
   return (
     <>
-      <Routes>
+      <Routes> 
         {PUBLIC_ROUTES.map((item) => (
           <Route path={item.link} element={item.element} key={item.id} />
         ))}
+        {username !== null
+          ? PRIVATE_ROUTES.map((item) => (
+              <Route
+                path={item.link}
+                element={
+                  username !== undefined ? (
+                    item.element
+                  ) : (
+                    <Navigate replace to="*" />
+                  )
+                }
+                key={item.id}
+              />
+            ))
+          : null}
       </Routes>
     </>
   );

@@ -4,3 +4,9 @@
 .css-1t6e9jv-MuiCardActions-root{
     background-color: white;
 }
+
+@media all and (max-width: 700px) {
+    .cardproduct {
+        width: 100%;
+    }
+}

@@ -101,9 +101,34 @@ function NavbarCustom() {
               className="pagesadapt"
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                  }}
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                >
+                  <Link to="/">
+                    <Button sx={{ color: "black", display: "block" }}>
+                      Register
+                    </Button>
+                  </Link>
                   <Link to="/dangerous">
-                    <Typography textAlign="center">{page}</Typography>
+                    <Button sx={{ color: "black", display: "block" }}>
+                      DANGEROUS
+                    </Button>
+                  </Link>
+                  <Link to="/homepage">
+                    <Button sx={{ color: "black", display: "block" }}>
+                      Main
+                    </Button>
+                  </Link>
+                  <Link to="/products">
+                    <Button sx={{ color: "black", display: "block" }}>
+                      Product
+                    </Button>
                   </Link>
                 </MenuItem>
               ))}

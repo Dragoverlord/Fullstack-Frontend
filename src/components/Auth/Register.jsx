@@ -135,7 +135,7 @@ export default function Register() {
               </Grid>
               <Grid item>
                 <Link href="/loginpage" sx={{ color: "white" }} variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {"You have an account? Sign in"}
                 </Link>
               </Grid>
             </Grid>

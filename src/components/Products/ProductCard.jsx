@@ -11,6 +11,7 @@ import { useAuth } from "../../context/authContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
 import "../Products/ProductCard.css"
+import backsimg from "../storage/narko2.jpg"
 
 export default function ProductCard({ item }) {
   const { deleteProduct, toggleLike, getOneProduct } = useProducts();
@@ -21,8 +22,8 @@ export default function ProductCard({ item }) {
 
   console.log(item);
   return (
-    <Card sx={{ width: 345, margin: "20px",  padding: "5px" }}>
-      <CardMedia sx={{ height: 345 }} image={item.image} title={item.title} />
+    <Card className="cardproduct" sx={{ width: "320px", margin: "20px",  padding: "5px" , background: `url(${backsimg})` }}>
+      <CardMedia sx={{ height: "320px" }} image={item.image} title={item.title} />
       <CardContent onClick={() => navigate(`/products/${item.id}`)}>
         <Typography style={{ color: "white" }} gutterBottom variant="h5" component="div">
           {item.title}

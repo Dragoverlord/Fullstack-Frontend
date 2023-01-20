@@ -5,6 +5,7 @@ import NavbarCustom from "../navbar/Navbar";
 import "../MainPage/MainPage.css";
 import Backs from "../storage/backs.jpg";
 import { Avatar, Button, TextField, Typography } from "@mui/material";
+import ReactCountryFlag from "react-country-flag";
 
 const Profile = () => {
   return (
@@ -20,6 +21,7 @@ const Profile = () => {
           height: "100%",
           display: "flex",
           margin: "0 40px",
+          flexWrap: "wrap"
         }}
       >
         <Box sx={{ margin: "80px 40px" }}>
@@ -32,8 +34,8 @@ const Profile = () => {
             sx={{
               backgroundColor: "black",
               color: "white",
-              width: "500px",
-              height: "600px",
+              width: "100%",
+              height: "70%",
               borderRadius: "10px",
               display: "flex",
               flexDirection: "column",
@@ -57,6 +59,30 @@ const Profile = () => {
             </Box>
             <br />
             <Box>
+              <ReactCountryFlag
+                countryCode="US"
+                svg
+                style={{
+                  width: "6em",
+                  height: "6em",
+                  margin: "0 20px"
+                }}
+                title="US"
+              />
+              <ReactCountryFlag
+                className="emojiFlag"
+                countryCode="US"
+                style={{
+                  fontSize: "6em",
+                  lineHeight: "2em",
+                  margin: "0 20px"
+                }}
+                aria-label="United States"
+              />
+            </Box>
+
+            <br />
+            <Box>
               <Typography variant="h3">Balance</Typography>
               <Typography textAlign="start" variant="h5">
                 5000$
@@ -68,7 +94,7 @@ const Profile = () => {
           sx={{
             backgroundColor: "black",
             color: "white",
-            width: "1000px",
+            width: "60%",
             height: "1100px",
             borderRadius: "10px",
             display: "flex",
@@ -88,17 +114,35 @@ const Profile = () => {
               color: "black",
             }}
           >
-            <Typography style={{ color: "white", margin: "50px auto" }}>Profile Option</Typography>
-            <input type="file" name="Avatar" style={{ color: "white", margin: "50px auto"  }} />
+            <Typography style={{ color: "white", margin: "50px auto" }}>
+              Profile Option
+            </Typography>
+            <input
+              type="file"
+              name="Avatar"
+              style={{ color: "white", margin: "50px auto" }}
+            />
             <TextField
               label="Username"
               fullWidth
               variant="filled"
-              sx={{ m: 1, bgcolor: "white", color: "black", margin: "50px auto" , borderRadius: "10px", }}
+              sx={{
+                m: 1,
+                bgcolor: "white",
+                color: "black",
+                margin: "50px auto",
+                borderRadius: "10px",
+              }}
               name="username"
             />
             <Button
-              sx={{ m: 1, bgcolor: "darkred", color: "white" , margin: "50px auto", borderRadius: "10px", }}
+              sx={{
+                m: 1,
+                bgcolor: "darkred",
+                color: "white",
+                margin: "50px auto",
+                borderRadius: "10px",
+              }}
               variant="outlined"
               fullWidth
               size="large"
