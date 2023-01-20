@@ -44,7 +44,7 @@ export default function Login() {
       alert("Заполните поля!");
       return;
     }
-
+    // let formData = {email , password}
     let formData = new FormData();
     formData.append("email", email);
     formData.append("password", password);

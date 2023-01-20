@@ -30,17 +30,20 @@ const AuthContextProvider = ({ children }) => {
 
   const login = async (formData, email) => {
     try {
-      const res = await axios.post(`${API}login/`, formData);
+      // const res = await axios.post(`${API}token/`, JSON.stringify(formData));
+      console.log(formData);
+      const res = await axios.post(`${API}token/`, formData);
       console.log(res);
       localStorage.setItem("token", JSON.stringify(res.data));
       localStorage.setItem("username", email);
       setUser(email);
       navigate("/");
     } catch (error) {
-      console.log(error.response.data.detail);
-      setError(error.response.data.detail);
+      console.log(error);
+      setError(error.response.data);
     }
   };
+
   async function checkAuth() {
     let token = JSON.parse(localStorage.getItem("token"));
     console.log(token);
@@ -57,37 +60,6 @@ const AuthContextProvider = ({ children }) => {
       );
       let username = localStorage.getItem("username")
       setUser(username)
-      // console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function checkAuth() {
-    let token = JSON.parse(localStorage.getItem("token"));
-    // console.log(token);
-    try {
-      const Authorization = `Bearer ${token.access}`;
-
-      let res = await axios.post(
-        `${API}token/refresh/`,
-        {
-          refresh: token.refresh,
-        },
-        {
-          headers: { Authorization },
-        }
-      );
-
-      localStorage.setItem(
-        "token",
-        JSON.stringify({ refresh: token.refresh, access: res.data.access })
-      );
-
-      let username = localStorage.getItem("username");
-
-      setUser(username);
-
       // console.log(res);
     } catch (error) {
       console.log(error);
