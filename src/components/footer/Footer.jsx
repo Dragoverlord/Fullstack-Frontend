@@ -3,7 +3,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import "../footer/Footer.css"
+import "../footer/Footer.css";
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary">
@@ -23,6 +23,7 @@ export default function Footer() {
       sx={{
         display: "flex",
         flexDirection: "column",
+        flexWrap: "wrap",
         minHeight: "100vh",
         color: "white",
       }}
@@ -38,7 +39,10 @@ export default function Footer() {
           color: "white",
         }}
       >
-        <div className="containerFooter">
+        <div
+          className="containerFooter"
+          style={{backgroundColor: "black"}}
+        >
           <a href="/dangerous">WARNING</a>
           <a href="/">MAIN</a>
           <a href="/products">PRODUCT</a>

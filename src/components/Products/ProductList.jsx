@@ -4,7 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../context/productContext";
 import ProductCard from "./ProductCard.jsx";
 import SidebarProducts from "./SidebarProducts";
-import "../Products/ProductList.css"
+import "./ProductList.css"
+import AddProduct from "./AddProduct";
 const ProductsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,15 +26,16 @@ const ProductsList = () => {
 
   return (
     <div>
-      <p className="goods">ALL GOODS</p>
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-around",
+          flexWrap: "wrap",
         }}
       >
-        <Box>
+        <Box className="sidebar" sx={{ margin: "90px 0"}}>
           <SidebarProducts />
+          <AddProduct/>
         </Box>
         <Box
           sx={{
@@ -49,7 +51,6 @@ const ProductsList = () => {
           ))}
         </Box>
       </Box>
-
       <Box>
         <Pagination
           variant="outlined"

@@ -1,5 +1,4 @@
 import React from "react";
-import AddProduct from "../components/Products/AddProduct";
 import Footer from "../components/footer/Footer";
 import NavbarCustom from "../components/navbar/Navbar";
 import Backs from "../components/storage/backs.jpg";
@@ -13,8 +12,7 @@ const ProductPage = () => {
           <img id="backs" src={Backs} alt="" />
         </div>
         <NavbarCustom />
-        <AddProduct /> 
-        <ProductsList/>
+        <ProductsList />
         <Footer />
       </>
     </div>
