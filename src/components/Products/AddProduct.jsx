@@ -60,8 +60,8 @@ const AddProduct = () => {
         <Box
         className="addproduct"
           sx={{
-            width: "50%",
-            height: "100%",
+            width: "90%",
+            height: "50%",
             margin: "50px auto",
             display: "flex",
             flexDirection: "column",

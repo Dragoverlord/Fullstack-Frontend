@@ -4,9 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../context/productContext";
 import ProductCard from "./ProductCard.jsx";
 import SidebarProducts from "./SidebarProducts";
-import "./ProductLIst.css";
+import "./ProductList.css"
 import AddProduct from "./AddProduct";
-
 const ProductsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,9 +13,11 @@ const ProductsList = () => {
   useEffect(() => {
     getProducts();
   }, []);
+
   useEffect(() => {
     getProducts();
   }, [searchParams]);
+
   useEffect(() => {
     setSearchParams({
       page: currentPage,
@@ -25,18 +26,6 @@ const ProductsList = () => {
 
   return (
     <div>
-      <Box className="header-footer">
-        <div className="container-6 container-6_solid">
-          <div className="title_wrapper">
-            <h1>Wellcome</h1>
-          </div>
-        </div>
-        <div className="container-6 container-6_image" aria-hidden="true">
-          <div className="title_wrapper">
-            <h1>Wellcome</h1>
-          </div>
-        </div>
-      </Box>
       <Box
         sx={{
           display: "flex",
@@ -44,7 +33,7 @@ const ProductsList = () => {
           flexWrap: "wrap",
         }}
       >
-        <Box>
+        <Box className="sidebar" sx={{ margin: "90px 0"}}>
           <SidebarProducts />
           <AddProduct/>
         </Box>

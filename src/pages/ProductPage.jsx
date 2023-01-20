@@ -12,7 +12,7 @@ const ProductPage = () => {
           <img id="backs" src={Backs} alt="" />
         </div>
         <NavbarCustom />
-        <ProductsList/>
+        <ProductsList />
         <Footer />
       </>
     </div>

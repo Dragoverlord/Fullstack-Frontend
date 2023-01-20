@@ -6,6 +6,7 @@ import Error from "../components/Error/Error";
 import HomePage from "../components/HomePage/HomePage";
 import MainPage from "../components/MainPage/MainPage";
 import Dangerous from "../components/OurRules/Dangerous";
+import OnlyDrugs from "../components/Products/OnlyDrugs";
 import ProductDetails from "../components/Products/ProductDetails";
 import Profile from "../components/Profile/Profile";
 import LoginPage from "../pages/LoginPage";
@@ -68,6 +69,11 @@ const MainRoutes = () => {
       link: "/profile",
       element: <Profile />,
       id: 10,
+    },
+    {
+      link: "/drugs",
+      element: <OnlyDrugs />,
+      id: 12,
     },
   ];
 
