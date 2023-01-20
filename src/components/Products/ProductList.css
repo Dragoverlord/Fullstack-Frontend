@@ -1,0 +1,9 @@
+.goods {
+    font-size: 5rem;
+    color: white;
+    font-weight: 700;
+    transform: translate(35vw, -35vh);
+}
+body{
+    overflow-x: hidden !important;
+}

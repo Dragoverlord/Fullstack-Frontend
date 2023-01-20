@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../context/productContext";
 import ProductCard from "./ProductCard.jsx";
 import SidebarProducts from "./SidebarProducts";
-
+import "../Products/ProductList.css"
 const ProductsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -12,9 +12,11 @@ const ProductsList = () => {
   useEffect(() => {
     getProducts();
   }, []);
+
   useEffect(() => {
     getProducts();
   }, [searchParams]);
+
   useEffect(() => {
     setSearchParams({
       page: currentPage,
@@ -23,6 +25,7 @@ const ProductsList = () => {
 
   return (
     <div>
+      <p className="goods">ALL GOODS</p>
       <Box
         sx={{
           display: "flex",
@@ -30,7 +33,7 @@ const ProductsList = () => {
         }}
       >
         <Box>
-          <SidebarProducts/>
+          <SidebarProducts />
         </Box>
         <Box
           sx={{
@@ -53,7 +56,7 @@ const ProductsList = () => {
           color="primary"
           count={pages}
           page={currentPage}
-          sx={{ bgcolor: "white", width: "304px", margin: "auto",}}
+          sx={{ bgcolor: "white", width: "304px", margin: "auto" }}
           onChange={(e, page) => setCurrentPage(page)}
         />
       </Box>

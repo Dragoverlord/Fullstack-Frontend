@@ -2,9 +2,8 @@ import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
-
+import "../footer/Footer.css"
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary">
@@ -39,12 +38,16 @@ export default function Footer() {
           color: "white",
         }}
       >
-        <Container maxWidth="sm">
-          <Typography variant="body1">
-            My sticky footer can be found here.
-          </Typography>
-          <Copyright />
-        </Container>
+        <div className="containerFooter">
+          <a href="/dangerous">WARNING</a>
+          <a href="/">MAIN</a>
+          <a href="/products">PRODUCT</a>
+          <a href="/drugs">DRUGS</a>
+          <a href="#">GUNS</a>
+          <a href="#">CONTRACT KILLINGS</a>
+          <a href="#">HACK</a>
+          <p>made with the support of hydra﹫</p>
+        </div>
       </Box>
     </Box>
   );

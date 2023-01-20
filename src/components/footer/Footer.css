@@ -1,0 +1,15 @@
+.containerFooter a{
+    margin-left: 9%;
+    text-decoration: none;
+    color: white;
+    transition: 2s;
+}
+.containerFooter a:hover{
+    color: red;
+    transition: 1s;
+}
+.containerFooter p {
+    text-align: center;
+    margin-top: 5%;
+    color: blue;
+}
