@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -7,15 +7,20 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import logoUser from "../../image/kisspng_cerberus_capital_management_logo_hades_geometric_greek_art.svg";
+import "../navbar/Navbar.css";
+import Logo from "../storage/logo.svg";
+import { Link } from "react-router-dom";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["WARNING"];
+const settings = [
+  { name: "Profile", link: "/profile", id: 1 },
+  { name: "Account", link: "/", id: 2 },
+  { name: "Logout", link: "#", id: 3 },
+  { name: "Chats", link: "/chats", id: 4 },
+];
 
 function NavbarCustom() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -46,23 +51,24 @@ function NavbarCustom() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              fontSize: "5rem",
+              // mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: "3rem",
               color: "inherit",
               textDecoration: "none",
             }}
+            className="logoName"
           >
-            LOGO
+            CERBER
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -93,53 +99,72 @@ function NavbarCustom() {
               sx={{
                 display: { xs: "block", md: "none" },
               }}
+              className="pagesadapt"
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                  }}
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                >
+                  <Link to="/">
+                    <Button sx={{ color: "black", display: "block" }}>
+                      Register
+                    </Button>
+                  </Link>
+                  <Link to="/dangerous">
+                    <Button sx={{ color: "black", display: "block" }}>
+                      DANGEROUS
+                    </Button>
+                  </Link>
+                  <Link to="/homepage">
+                    <Button sx={{ color: "black", display: "block" }}>
+                      Main
+                    </Button>
+                  </Link>
+                  <Link to="/products">
+                    <Button sx={{ color: "black", display: "block" }}>
+                      Product
+                    </Button>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+          <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
+              <Link to="/dangerous">
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              </Link>
             ))}
+
+            <Link to="/homepage">
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                Main
+              </Button>
+            </Link>
+            <Link to="/products">
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                Product
+              </Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  sx={{ width: "150px", height: "150px" }}
-                  alt="Remy Sharp"
-                  src={logoUser}
-                />
+                <img className="logo" src={Logo} alt="" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -159,8 +184,14 @@ function NavbarCustom() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+                  <Link
+                    style={{ color: "black", textDecoration: "none" }}
+                    to={setting.link}
+                    textAlign="center"
+                  >
+                    {setting.name}
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>

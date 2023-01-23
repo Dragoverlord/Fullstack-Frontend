@@ -1,0 +1,12 @@
+@media all and (max-width: 1440px) {
+    .sidebar {
+        width: 80%;
+    }
+}
+
+
+@media all and (min-width: 1440px) {
+    .sidebar {
+        width: 30%;
+    }
+}
