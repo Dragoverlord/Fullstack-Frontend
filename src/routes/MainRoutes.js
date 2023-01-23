@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Register from "../components/Auth/Register";
+import Chat from "../components/Chat/Chat";
 import Contact from "../components/contact/Contact";
 import Error from "../components/Error/Error";
 import HomePage from "../components/HomePage/HomePage";
@@ -13,7 +14,7 @@ import LoginPage from "../pages/LoginPage";
 import ProductPage from "../pages/ProductPage";
 
 const MainRoutes = () => {
-  const username = localStorage.getItem("username")
+  const username = localStorage.getItem("username");
 
   const PUBLIC_ROUTES = [
     {
@@ -75,11 +76,16 @@ const MainRoutes = () => {
       element: <OnlyDrugs />,
       id: 12,
     },
+    {
+      link: "/chats",
+      element: <Chat />,
+      id: 13,
+    },
   ];
 
   return (
     <>
-      <Routes> 
+      <Routes>
         {PUBLIC_ROUTES.map((item) => (
           <Route path={item.link} element={item.element} key={item.id} />
         ))}
