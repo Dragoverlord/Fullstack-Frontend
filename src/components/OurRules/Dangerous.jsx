@@ -1,9 +1,11 @@
 import React from "react";
 import Rule from "../storage/rules.jpg";
 import "../OurRules/Dangerous.css";
+import NavbarCustom from "../navbar/Navbar";
 const Dangerous = () => {
   return (
     <div>
+      <NavbarCustom/>
       <img id="rule" src={Rule} alt="" />
       <p className="titleRule">ОПАСНО!</p>
 
