@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Register from "../components/Auth/Register";
+import Chat from "../components/Chat/Chat";
 import Contact from "../components/contact/Contact";
 import Error from "../components/Error/Error";
 import ForgotPassword from "../components/forgotPassword/ForgotPassword";
@@ -16,7 +17,7 @@ import LoginPage from "../pages/LoginPage";
 import ProductPage from "../pages/ProductPage";
 
 const MainRoutes = () => {
-  const username = localStorage.getItem("username")
+  const username = localStorage.getItem("username");
 
   const PUBLIC_ROUTES = [
     {
@@ -93,11 +94,15 @@ const MainRoutes = () => {
       element: <EditPage />,
       id: 14,
     },
+      link: "/chats",
+      element: <Chat />,
+      id: 15,
+    },
   ];
 
   return (
     <>
-      <Routes> 
+      <Routes>
         {PUBLIC_ROUTES.map((item) => (
           <Route path={item.link} element={item.element} key={item.id} />
         ))}
