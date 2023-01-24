@@ -19,6 +19,7 @@ const settings = [
   { name: "Profile", link: "/profile", id: 1 },
   { name: "Account", link: "/loginpage", id: 2 },
   { name: "Logout", link: "#", id: 3 },
+  { name: "Chats", link: "/chats", id: 4 },
 ];
 
 function NavbarCustom() {
