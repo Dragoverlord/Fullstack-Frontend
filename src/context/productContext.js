@@ -88,7 +88,7 @@ const ProductContextProvider = ({ children }) => {
       const Authorization = `Bearer ${token.access}`;
       const config = {
         headers: {
-          Authorization,
+          Authorization,  
         },
       };
       const res = await axios.delete(`${API}/products/${id}`, config);

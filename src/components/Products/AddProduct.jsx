@@ -104,13 +104,12 @@ const AddProduct = () => {
             type="file"
             name="image"
             onChange={handleInp}
-            style={{  color: "white" }}
+            style={{  color: "white" ,margin: "20px 0" }}
           />
           <FormControl fullWidth>
             <InputLabel
-              // sx={{ bgcolor: "white", color: "black" }}
               id="select-label"
-              style={{  backgroundColor: "black",color: "white" }}
+              style={{  backgroundColor: "black" , color: "white" , margin: "20px 0"}}
             >
               Category
             </InputLabel>

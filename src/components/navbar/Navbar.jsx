@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 const pages = ["WARNING"];
 const settings = [
   { name: "Profile", link: "/profile", id: 1 },
-  { name: "Account", link: "/", id: 2 },
+  { name: "Account", link: "/loginpage", id: 2 },
   { name: "Logout", link: "#", id: 3 },
 ];
 

@@ -1,15 +1,47 @@
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../footer/Footer";
 import NavbarCustom from "../navbar/Navbar";
 import "../MainPage/MainPage.css";
 import Backs from "../storage/backs.jpg";
-import { Avatar, Button, TextField, Typography } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  Pagination,
+  TextField,
+  Typography,
+} from "@mui/material";
 import ReactCountryFlag from "react-country-flag";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import "./Profile.css";
+import { useProducts } from "../../context/productContext";
+import ProductCard from "../Products/ProductCard";
+import { useAccount } from "../../context/AccountContext";
 
-const Profile = () => {
+const Profile = ({ item }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { getProducts, products, pages } = useProducts();
+
+  const { user, getUser } = useAccount();
+
+  useEffect(() => {
+    getProducts();
+    getUser();
+  }, []);
+
+  useEffect(() => {
+    getProducts();
+  }, [searchParams]);
+
+  useEffect(() => {
+    setSearchParams({
+      page: currentPage,
+    });
+  }, [currentPage]);
+
+  console.log(user);
+
   return (
     <Box>
       <div>
@@ -19,25 +51,27 @@ const Profile = () => {
       <Box
         sx={{
           color: "white",
-          width: "94%",
           height: "100%",
           display: "flex",
-          margin: "0 40px",
+          margin: "0",
           flexWrap: "wrap",
         }}
       >
         <Box className="profile-info" sx={{ margin: "80px 40px" }}>
-          <Avatar
-            sx={{ width: "400px", height: "400px", margin: "40px" }}
-            alt="Remy Sharp"
-            src="https://cdn.mos.cms.futurecdn.net/eVyt9jnUrLBSvSwW6pScj9.jpg"
-          />
+          <Box sx={{ width: "320px", height: "320px", margin: "40px" }}>
+            <Avatar
+              sx={{ width: "100%", height: "100%" }}
+              className="avatar"
+              alt="Remy Sharp"
+              src="https://cdn.mos.cms.futurecdn.net/eVyt9jnUrLBSvSwW6pScj9.jpg"
+            />
+          </Box>
           <Box
             sx={{
               backgroundColor: "black",
               color: "white",
               width: "100%",
-              height: "80%",
+              height: "50%",
               borderRadius: "10px",
               display: "flex",
               flexDirection: "column",
@@ -47,9 +81,9 @@ const Profile = () => {
             }}
           >
             <Box>
-              <Typography variant="h3">UserName</Typography>
+              <Typography variant="h3">Username</Typography>
               <Typography textAlign="start" variant="h5">
-                DragOverlord
+                Dragoverlord
               </Typography>
             </Box>
             <br />
@@ -62,18 +96,18 @@ const Profile = () => {
             <br />
             <Box>
               <ReactCountryFlag
-                countryCode="US"
+                countryCode="JP"
                 svg
                 style={{
                   width: "6em",
                   height: "6em",
                   margin: "0 20px",
                 }}
-                title="US"
+                title="JP"
               />
               <ReactCountryFlag
                 className="emojiFlag"
-                countryCode="US"
+                countryCode="JP"
                 style={{
                   fontSize: "6em",
                   lineHeight: "2em",
@@ -91,7 +125,7 @@ const Profile = () => {
               </Typography>
             </Box>
             <Box sx={{ flexGrow: 0 }} />
-            <Link to="/">
+            <Link to="/Balance">
               <Button
                 sx={{
                   color: "white",
@@ -110,12 +144,11 @@ const Profile = () => {
             backgroundColor: "black",
             color: "white",
             width: "54%",
-            height: "1100px",
+            height: "100%",
             borderRadius: "10px",
             display: "flex",
             flexDirection: "column",
-            padding: "0 40px",
-            margin: "200px 40px",
+            padding: "40px 40px",
           }}
         >
           <Box
@@ -155,7 +188,7 @@ const Profile = () => {
               name="username"
             />
             <TextField
-              label="Contry"
+              label="Contry (max-length 2 Symbol)"
               fullWidth
               variant="filled"
               sx={{
@@ -181,6 +214,43 @@ const Profile = () => {
             >
               Save option
             </Button>
+          </Box>
+          <Box
+            sx={{
+              width: "40vw",
+              margin: "0 auto",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              color: "black",
+            }}
+          >
+            <Typography style={{ color: "white", margin: "150px auto" }}>
+              Favorite Products
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-around",
+                flexWrap: "wrap",
+                width: "100%",
+              }}
+            >
+              {products.map((item) => (
+                <ProductCard item={item} key={item.id} />
+              ))}
+            </Box>
+            <Box>
+              <Pagination
+                variant="outlined"
+                color="primary"
+                count={pages}
+                page={currentPage}
+                sx={{ bgcolor: "white", width: "100%", margin: "auto" }}
+                onChange={(page) => setCurrentPage(page)}
+              />
+            </Box>
           </Box>
         </Box>
       </Box>
