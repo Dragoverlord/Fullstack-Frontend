@@ -39,6 +39,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [code , setCode] = useState("");
 
   function handleSave() {
     if (!email.trim() || !password.trim() || !passwordConfirm.trim()) {
@@ -53,7 +54,7 @@ export default function Register() {
 
     // console.log(email, password, passwordConfirm);
     console.log(formData);
-    register(formData);
+    register(formData , code);
   }
 
   return (
@@ -119,6 +120,19 @@ export default function Register() {
               value={passwordConfirm}
               onChange={(e) => setPasswordConfirm(e.target.value)}
             />
+            <TextField
+              sx={{ bgcolor: "white" }}
+              margin="normal"
+              required
+              fullWidth
+              name="code"
+              label="Code Infaite"
+              type="code"
+              id="code"
+              autoComplete="text"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
             <Button
               fullWidth
               variant="outlined"
@@ -129,7 +143,7 @@ export default function Register() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" sx={{ color: "white" }} variant="body2">
+                <Link href="forgot" sx={{ color: "white" }} variant="body2">
                   Forgot password?
                 </Link>
               </Grid>

@@ -43,7 +43,8 @@ const ProductsList = () => {
             justifyContent: "space-around",
             flexWrap: "wrap",
             margin: "20px auto",
-            width: "1300px",
+            width: "60%",
+            height: "100%"
           }}
         >
           {products.map((item) => (
