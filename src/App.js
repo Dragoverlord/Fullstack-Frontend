@@ -1,5 +1,5 @@
 import React from "react";
-// import "./Apps.css";
+import "./App.css";
 import AccountContextProvider from "./context/AccountContext";
 import AuthContextProvider from "./context/authContext";
 import BalanceContextProvider from "./context/balance";
