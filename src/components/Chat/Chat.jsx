@@ -1,5 +1,3 @@
-import React from "react";
-import { ChatEngine } from "react-chat-engine";
 import Footer from "../footer/Footer";
 import NavbarCustom from "../navbar/Navbar";
 import Backs from "../../components/storage/backs.jpg";
