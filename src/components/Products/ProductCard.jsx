@@ -13,13 +13,17 @@ import { useNavigate } from "react-router-dom";
 import "../Products/ProductCard.css";
 import backsimg from "../storage/narko2.jpg";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
+import { useCart } from "../../context/cartContext";
+import { IconButton } from "@mui/material";
+
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
 export default function ProductCard({ item }) {
   const { deleteProduct, toggleLike, getOneProduct } = useProducts();
   const { user } = useAuth();
   const [isLiked, setIsLiked] = useState(false);
-
+  const { addModelToCart, checkModelInCart } = useCart();
   const navigate = useNavigate();
 
   console.log(item);
@@ -99,6 +103,28 @@ export default function ProductCard({ item }) {
         >
           <EditIcon />
         </Button>
+      </CardActions>
+
+      <CardActions>
+        {user !== null ? (
+          <IconButton onClick={() => addModelToCart(item)}>
+            {checkModelInCart(item.id) ? (
+              <>
+                <ShoppingCartCheckoutIcon
+                  sx={{
+                    color: "brown",
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                <ShoppingCartCheckoutIcon />
+              </>
+            )}
+          </IconButton>
+        ) : (
+          <></>
+        )}
       </CardActions>
     </Card>
   );
