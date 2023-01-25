@@ -37,6 +37,10 @@ function reducer(state = INIT_STATE, action) {
 }
 
 const API = "http://34.122.138.182";
+
+
+
+
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NjM0NzQ2LCJpYXQiOjE2NzQ2MzExNDUsImp0aSI6ImVjMTcyNzVhYjk4YTQzNDQ5NDljZDQ2MGE3MGYwNWUzIiwidXNlcl9pZCI6MX0.RHiPIqva3ijVSDF0cpg4kP-MkaO7G5U8EmshwLuL7nc
 
 const ProductContextProvider = ({ children }) => {
