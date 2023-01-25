@@ -8,6 +8,7 @@ import ForgotPassword from "../components/forgotPassword/ForgotPassword";
 import HomePage from "../components/HomePage/HomePage";
 import MainPage from "../components/MainPage/MainPage";
 import Dangerous from "../components/OurRules/Dangerous";
+import Cart from "../components/Products/Cart";
 import OnlyDrugs from "../components/Products/OnlyDrugs";
 import ProductDetails from "../components/Products/ProductDetails";
 import Profile from "../components/Profile/Profile";
@@ -98,6 +99,11 @@ const MainRoutes = () => {
       link: "/chats",
       element: <Chat />,
       id: 15,
+    },
+    {
+      link: "/cart",
+      element: <Cart />,
+      id: 16,
     },
   ];
 

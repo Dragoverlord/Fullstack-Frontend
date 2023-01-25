@@ -12,7 +12,11 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import "../navbar/Navbar.css";
 import Logo from "../storage/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+import { AccountCircle } from "@mui/icons-material";
+import { Badge } from "@mui/material";
+import { useCart } from "../../context/cartContext";
 
 const pages = ["WARNING"];
 const settings = [
@@ -23,6 +27,8 @@ const settings = [
 ];
 
 function NavbarCustom() {
+  const navigate = useNavigate()
+  const {cart} = useCart()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -40,7 +46,12 @@ function NavbarCustom() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const menuId = "primary-search-account-menu";
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
   return (
     <AppBar
       position="static"
@@ -159,6 +170,20 @@ function NavbarCustom() {
                 Product
               </Button>
             </Link>
+          </Box>
+
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+              onClick={() => navigate("/cart")}
+            >
+              <Badge badgeContent={cart?.models.length} color="error">
+                <ShoppingCartCheckoutIcon />
+              </Badge>
+            </IconButton>
+
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
