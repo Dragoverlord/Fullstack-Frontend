@@ -94,6 +94,7 @@ const MainRoutes = () => {
       element: <EditPage />,
       id: 14,
     },
+    {
       link: "/chats",
       element: <Chat />,
       id: 15,
