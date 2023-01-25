@@ -20,7 +20,7 @@ const AddProduct = () => {
     title: "",
     description: "",
     price: 0,
-    category: [""],
+    category: "",
     image: "",
     quantity: 0,
     warning: "",
