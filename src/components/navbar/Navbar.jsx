@@ -18,6 +18,7 @@ import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import { AccountCircle } from "@mui/icons-material";
 import { Badge } from "@mui/material";
 import { useCart } from "../../context/cartContext";
+import { useAuth } from "../../context/authContext";
 
 
 const pages = ["WARNING"];
@@ -32,7 +33,7 @@ function NavbarCustom() {
   const navigate = useNavigate()
   const {cart} = useCart()
 
-  const { logout } = useAuth;
+  const { logout } = useAuth();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
