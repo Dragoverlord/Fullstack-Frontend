@@ -21,6 +21,7 @@ export default function EditProduct() {
     getCategories,
     categories,
     addProduct,
+    editProduct,
   } = useProducts();
   const [isLiked, setIsLiked] = useState(false);
 
@@ -53,13 +54,13 @@ export default function EditProduct() {
   };
 
   function handelSave() {
-    let newProduct = new FormData();
-    newProduct.append("title", product.title);
-    newProduct.append("description", product.description);
-    newProduct.append("price", product.price);
-    newProduct.append("category", product.category);
-    newProduct.append("image", product.image);
-    addProduct(newProduct);
+    let editProduct = new FormData();
+    editProduct.append("title", product.title);
+    editProduct.append("description", product.description);
+    editProduct.append("price", product.price);
+    editProduct.append("category", product.category);
+    editProduct.append("image", product.image);
+    editProduct(editProduct);
   }
   console.log(categories);
   console.log(product);
