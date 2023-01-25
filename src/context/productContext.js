@@ -103,7 +103,7 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
-  async function editProduct(id, editProduct) {
+  async function editProduct(id, Editproduct) {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const Authorization = `Bearer ${token.access}`;
@@ -114,7 +114,7 @@ const ProductContextProvider = ({ children }) => {
       };
       const res = await axios.patch(
         `${API}/v1/api/product/${id}`,
-        editProduct,
+        Editproduct,
         config
       );
       getProducts();
