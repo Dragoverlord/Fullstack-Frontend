@@ -50,7 +50,7 @@ const AccountContextProvider = ({ children }) => {
         },
       };
       const id = 1;
-      const res = await axios(`${API}/users/${id}/`, config);
+      const res = await axios.get(`${API}users/${id}/`, config);
       dispatch({ type: "GET_ONE_USER", payload: res.data });
       console.log(res);
     } catch (error) {
@@ -58,6 +58,23 @@ const AccountContextProvider = ({ children }) => {
     }
   };
 
+
+  
+  const editProfile = async (id) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.patch(`${API}users/${id}/`, config);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getCode = async () => {
     try {

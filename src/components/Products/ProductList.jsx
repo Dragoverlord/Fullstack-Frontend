@@ -4,8 +4,9 @@ import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../context/productContext";
 import ProductCard from "./ProductCard.jsx";
 import SidebarProducts from "./SidebarProducts";
-import "./ProductLIst.css"
+import "../Products/ProductList.css"
 import AddProduct from "./AddProduct";
+
 const ProductsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();

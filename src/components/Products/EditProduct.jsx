@@ -6,64 +6,69 @@ import Button from "@mui/material/Button";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useProducts } from "../../context/productContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../Products/ProductCard.css";
 import backsimg from "../storage/narko2.jpg";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { Box, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 export default function EditProduct() {
-  const {
-    deleteProduct,
-    toggleLike,
-    getOneProduct,
-    getCategories,
-    categories,
-    addProduct,
-    editProduct,
-  } = useProducts();
+  const { id } = useParams();
+
+  
+  const { getOneProduct, oneProduct, customEditProduct } = useProducts();
   const [isLiked, setIsLiked] = useState(false);
-
+  
+  const [editProduct, setEditProduct] = useState("");
+  
   const navigate = useNavigate();
-
+  console.log(oneProduct);
+  
   useEffect(() => {
-    getCategories();
+    getOneProduct(id);
   }, []);
 
-  const [product, setProduct] = useState({
-    title: "",
-    description: "",
-    price: "",
-    category: 0,
-    image: "",
-  });
+  useEffect(()=>{
+    setEditProduct(oneProduct)
+  }, [oneProduct])
 
   const handleInp = (e) => {
     if (e.target.name === "image") {
-      setProduct({
-        ...product,
+      setEditProduct({
+        ...editProduct,
         [e.target.name]: e.target.files[0],
       });
     } else {
-      setProduct({
-        ...product,
+      setEditProduct({
+        ...editProduct,
         [e.target.name]: e.target.value,
       });
     }
   };
 
   function handelSave() {
-    let editProduct = new FormData();
-    editProduct.append("title", product.title);
-    editProduct.append("description", product.description);
-    editProduct.append("price", product.price);
-    editProduct.append("category", product.category);
-    editProduct.append("image", product.image);
-    editProduct(editProduct);
+    let EditProduct = new FormData();
+    EditProduct.append("title", editProduct.title);
+    EditProduct.append("description", editProduct.description);
+    EditProduct.append("price", editProduct.price);
+    EditProduct.append("category", editProduct.category.slug);
+    EditProduct.append("image", editProduct.image);
+    EditProduct.append("quantity", editProduct.quantity);
+    EditProduct.append("warning", editProduct.warning);
+
+    customEditProduct(EditProduct , id);
   }
-  console.log(categories);
-  console.log(product);
+
+  if (!editProduct) return <></>
 
   return (
     <Card
@@ -90,14 +95,14 @@ export default function EditProduct() {
           padding: "20px",
         }}
       >
-        <Typography style={{ color: "white" }}>Add new product</Typography>
+        <Typography style={{ color: "white" }}>Edit Product</Typography>
         <TextField
           label="Title"
           fullWidth
           variant="filled"
           sx={{ m: 1, bgcolor: "white", color: "black" }}
           name="title"
-          value={product.title}
+          value={editProduct.title}
           onChange={handleInp}
         />
         <TextField
@@ -106,7 +111,7 @@ export default function EditProduct() {
           variant="filled"
           sx={{ m: 1, bgcolor: "white", color: "black" }}
           name="description"
-          value={product.description}
+          value={editProduct.description}
           onChange={handleInp}
         />
         <TextField
@@ -115,51 +120,50 @@ export default function EditProduct() {
           variant="filled"
           sx={{ m: 1, bgcolor: "white", color: "black" }}
           name="price"
-          value={product.price}
+          value={editProduct.price}
           onChange={handleInp}
         />
+        <TextField
+          label="quantity"
+          fullWidth
+          variant="filled"
+          sx={{ m: 1, bgcolor: "white", color: "black" }}
+          name="quantity"
+          value={editProduct.quantity}
+          onChange={handleInp}
+        />
+        <TextField
+          label="warning"
+          fullWidth
+          variant="filled"
+          sx={{ m: 1, bgcolor: "white", color: "black" }}
+          name="warning"
+          value={editProduct.warning}
+          onChange={handleInp}
+        />
+        <TextField
+          label="category"
+          fullWidth
+          variant="filled"
+          sx={{ m: 1, bgcolor: "white", color: "black" }}
+          name="category"
+          value={editProduct.category.slug}
+          onChange={handleInp}
+        ></TextField>
         <input
           type="file"
           name="image"
           onChange={handleInp}
           style={{ color: "white", margin: "20px 0" }}
         />
-        <FormControl fullWidth>
-          <InputLabel
-            id="select-label"
-            style={{
-              backgroundColor: "black",
-              color: "white",
-              margin: "20px 0",
-            }}
-          >
-            Category
-          </InputLabel>
-          <Select
-            value={product.category}
-            labelId="select-label"
-            name="category"
-            onChange={handleInp}
-            style={{ backgroundColor: "black", color: "white" }}
-          >
-            {categories?.map((item) => (
-              <MenuItem
-                sx={{ bgcolor: "white", color: "black" }}
-                value={item.id}
-              >
-                {item.title}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
         <Button
-          sx={{ m: 1, bgcolor: "white", color: "black" }}
+          sx={{ m: 1, bgcolor: "darkred", color: "black" }}
           variant="outlined"
           fullWidth
           size="large"
           onClick={handelSave}
         >
-          Add product
+          Edit product
         </Button>
       </Box>
     </Card>
