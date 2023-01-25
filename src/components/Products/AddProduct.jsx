@@ -133,8 +133,33 @@ const AddProduct = () => {
             type="file"
             name="image"
             onChange={handleInp}
-            style={{ color: "white", margin: "20px 0" }}
+
+            style={{  color: "white" ,margin: "20px 0" }}
           />
+          <FormControl fullWidth>
+            <InputLabel
+              id="select-label"
+              style={{  backgroundColor: "black" , color: "white" , margin: "20px 0"}}
+            >
+              Category
+            </InputLabel>
+            <Select
+              value={product.category}
+              labelId="select-label"
+              name="category"
+              onChange={handleInp}
+              style={{  backgroundColor: "black",color: "white" }}
+            >
+              {categories?.map((item) => (
+                <MenuItem
+                  sx={{ bgcolor: "white", color: "black" }}
+                  value={item.id}
+                >
+                  {item.title}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <Button
             sx={{ m: 1, bgcolor: "white", color: "black" }}
             variant="outlined"
