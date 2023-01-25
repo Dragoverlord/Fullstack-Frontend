@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../context/productContext";
 import ProductCard from "./ProductCard.jsx";
 import SidebarProducts from "./SidebarProducts";
-import "./ProductList.css"
+import "../Products/ProductList.css"
 import AddProduct from "./AddProduct";
 
 const ProductsList = () => {
