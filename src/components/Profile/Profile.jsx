@@ -90,7 +90,7 @@ const Profile = ({ item }) => {
             <Box>
               <Typography variant="h3">Email</Typography>
               <Typography textAlign="start" variant="h5">
-                Dragoverlord@mail.ru
+                nursultan.dzhetybaev.04@mail.ru
               </Typography>
             </Box>
             <br />
@@ -121,7 +121,7 @@ const Profile = ({ item }) => {
             <Box>
               <Typography variant="h3">Balance</Typography>
               <Typography textAlign="start" variant="h5">
-                5000$
+                1000.00 $
               </Typography>
             </Box>
             <Box sx={{ flexGrow: 0 }} />

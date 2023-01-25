@@ -38,9 +38,6 @@ function reducer(state = INIT_STATE, action) {
 
 const API = "http://34.122.138.182";
 
-
-
-
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NjM0NzQ2LCJpYXQiOjE2NzQ2MzExNDUsImp0aSI6ImVjMTcyNzVhYjk4YTQzNDQ5NDljZDQ2MGE3MGYwNWUzIiwidXNlcl9pZCI6MX0.RHiPIqva3ijVSDF0cpg4kP-MkaO7G5U8EmshwLuL7nc
 
 const ProductContextProvider = ({ children }) => {
@@ -49,26 +46,6 @@ const ProductContextProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const location = useLocation();
-
-  async function addProduct(newProduct) {
-    try {
-      const token = JSON.parse(localStorage.getItem("token"));
-      const Authorization = `Bearer ${token.access}`;
-      const config = {
-        headers: {
-          Authorization,
-        },
-      };
-      const res = await axios.post(
-        `${API}/v1/api/product/`,
-        newProduct,
-        config
-      );
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   async function getProducts() {
     try {
@@ -87,23 +64,44 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
-  async function deleteProduct(id) {
+  async function addProduct(newProduct) {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const Authorization = `Bearer ${token.access}`;
       const config = {
         headers: {
-          Authorization,  
+          Authorization,
         },
       };
-      const res = await axios.delete(`${API}/v1/api/product/${id}`, config);
+      const res = await axios.post(
+        `${API}/v1/api/product/`,
+        newProduct,
+        config
+      );
+      console.log(res);
       getProducts();
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function editProduct(id, Editproduct) {
+  async function deleteProduct(id) {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.delete(`${API}/v1/api/product/${id}/`, config);
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function customEditProduct(EditProduct, id) {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const Authorization = `Bearer ${token.access}`;
@@ -113,10 +111,11 @@ const ProductContextProvider = ({ children }) => {
         },
       };
       const res = await axios.patch(
-        `${API}/v1/api/product/${id}`,
-        Editproduct,
+        `${API}/v1/api/product/${id}/`,
+        EditProduct,
         config
       );
+      console.log(res);
       getProducts();
     } catch (error) {
       console.log(error);
@@ -132,7 +131,7 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios(`${API}/review/likes/${id}`, config);
+      const res = await axios(`${API}/review/likes/${id}/`, config);
       console.log(res);
       getProducts();
     } catch (error) {
@@ -181,7 +180,7 @@ const ProductContextProvider = ({ children }) => {
     getOneProduct,
     oneProduct: state.oneProduct,
     fetchByParams,
-    editProduct,
+    customEditProduct,
   };
 
   return (

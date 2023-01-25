@@ -94,7 +94,7 @@ export default function ProductCard({ item }) {
         )}
         <Button
           style={{ color: "black" }}
-          onClick={() => navigate("/editproduct")}
+          onClick={() => navigate(`/editproduct/${item.id}`)}
           size="small"
         >
           <EditIcon />
