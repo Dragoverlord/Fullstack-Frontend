@@ -61,16 +61,3 @@
 .container-6_image .title_wrapper h1 {
     color: rgb(0, 0, 0);
 }
-
-@media all and (max-width: 1440px) {
-    .sidebar {
-        width: 80%;
-    }
-}
-
-
-@media all and (min-width: 1440px) {
-    .sidebar {
-        width: 30%;
-    }
-}
