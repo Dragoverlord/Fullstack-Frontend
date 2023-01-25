@@ -4,12 +4,15 @@ import Register from "../components/Auth/Register";
 import Chat from "../components/Chat/Chat";
 import Contact from "../components/contact/Contact";
 import Error from "../components/Error/Error";
+import ForgotPassword from "../components/forgotPassword/ForgotPassword";
 import HomePage from "../components/HomePage/HomePage";
 import MainPage from "../components/MainPage/MainPage";
 import Dangerous from "../components/OurRules/Dangerous";
 import OnlyDrugs from "../components/Products/OnlyDrugs";
 import ProductDetails from "../components/Products/ProductDetails";
 import Profile from "../components/Profile/Profile";
+import BalancePage from "../pages/BalancePage";
+import EditPage from "../pages/EditPage";
 import LoginPage from "../pages/LoginPage";
 import ProductPage from "../pages/ProductPage";
 
@@ -36,6 +39,11 @@ const MainRoutes = () => {
       link: "*",
       element: <Error />,
       id: 11,
+    },
+    {
+      link: "/forgot",
+      element: <ForgotPassword />,
+      id: 13,
     },
   ];
 
@@ -77,9 +85,19 @@ const MainRoutes = () => {
       id: 12,
     },
     {
+      link: "/Balance",
+      element: <BalancePage />,
+      id: 13,
+    },
+    {
+      link: "/editproduct/:id",
+      element: <EditPage />,
+      id: 14,
+    },
+    {
       link: "/chats",
       element: <Chat />,
-      id: 13,
+      id: 15,
     },
   ];
 

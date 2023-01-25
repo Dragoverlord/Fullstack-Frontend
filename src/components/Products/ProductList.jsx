@@ -4,8 +4,9 @@ import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../context/productContext";
 import ProductCard from "./ProductCard.jsx";
 import SidebarProducts from "./SidebarProducts";
-import "./ProductList.css"
+import "../Products/ProductList.css"
 import AddProduct from "./AddProduct";
+
 const ProductsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -43,7 +44,8 @@ const ProductsList = () => {
             justifyContent: "space-around",
             flexWrap: "wrap",
             margin: "20px auto",
-            width: "1300px",
+            width: "60%",
+            height: "100%"
           }}
         >
           {products.map((item) => (

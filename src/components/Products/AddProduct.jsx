@@ -11,21 +11,19 @@ import {
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/authContext";
 import { useProducts } from "../../context/productContext";
-import "../Products/AddProduct.css"
+import "../Products/AddProduct.css";
 const AddProduct = () => {
   const { user } = useAuth();
-  const { getCategories, categories, addProduct } = useProducts();
-
-  useEffect(() => {
-    getCategories();
-  }, []);
+  const { addProduct } = useProducts();
 
   const [product, setProduct] = useState({
     title: "",
     description: "",
-    price: "",
-    category: 0,
+    price: 0,
+    category: "",
     image: "",
+    quantity: 0,
+    warning: "",
   });
 
   const handleInp = (e) => {
@@ -49,16 +47,18 @@ const AddProduct = () => {
     newProduct.append("price", product.price);
     newProduct.append("category", product.category);
     newProduct.append("image", product.image);
+    newProduct.append("quantity", product.quantity);
+    newProduct.append("warning", product.warning);
+
     addProduct(newProduct);
   }
-  console.log(categories);
   console.log(product);
 
   return (
     <>
       {user !== null ? (
         <Box
-        className="addproduct"
+          className="addproduct"
           sx={{
             width: "90%",
             height: "50%",
@@ -72,7 +72,7 @@ const AddProduct = () => {
             padding: "20px",
           }}
         >
-          <Typography style={{color: "white"}}>Add new product</Typography>
+          <Typography style={{ color: "white" }}>Add new product</Typography>
           <TextField
             label="Title"
             fullWidth
@@ -100,37 +100,42 @@ const AddProduct = () => {
             value={product.price}
             onChange={handleInp}
           />
+          <TextField
+            label="quantity"
+            fullWidth
+            variant="filled"
+            sx={{ m: 1, bgcolor: "white", color: "black" }}
+            name="quantity"
+            value={product.quantity}
+            onChange={handleInp}
+          />
+          <TextField
+            label="warning"
+            fullWidth
+            variant="filled"
+            sx={{ m: 1, bgcolor: "white", color: "black" }}
+            name="warning"
+            value={product.warning}
+            onChange={handleInp}
+          />
+          <TextField
+            label="category"
+            fullWidth
+            variant="filled"
+            sx={{ m: 1, bgcolor: "white", color: "black" }}
+            name="category"
+            value={product.category}
+            onChange={handleInp}
+          >
+            category
+          </TextField>
           <input
             type="file"
             name="image"
             onChange={handleInp}
-            style={{  color: "white" }}
+
+            style={{  color: "white" ,margin: "20px 0" }}
           />
-          <FormControl fullWidth>
-            <InputLabel
-              // sx={{ bgcolor: "white", color: "black" }}
-              id="select-label"
-              style={{  backgroundColor: "black",color: "white" }}
-            >
-              Category
-            </InputLabel>
-            <Select
-              value={product.category}
-              labelId="select-label"
-              name="category"
-              onChange={handleInp}
-              style={{  backgroundColor: "black",color: "white" }}
-            >
-              {categories?.map((item) => (
-                <MenuItem
-                  sx={{ bgcolor: "white", color: "black" }}
-                  value={item.id}
-                >
-                  {item.title}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
           <Button
             sx={{ m: 1, bgcolor: "white", color: "black" }}
             variant="outlined"

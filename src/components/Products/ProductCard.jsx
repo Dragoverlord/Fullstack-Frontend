@@ -10,8 +10,10 @@ import { useProducts } from "../../context/productContext";
 import { useAuth } from "../../context/authContext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
-import "../Products/ProductCard.css"
-import backsimg from "../storage/narko2.jpg"
+import "../Products/ProductCard.css";
+import backsimg from "../storage/narko2.jpg";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from '@mui/icons-material/Edit';
 
 export default function ProductCard({ item }) {
   const { deleteProduct, toggleLike, getOneProduct } = useProducts();
@@ -22,37 +24,58 @@ export default function ProductCard({ item }) {
 
   console.log(item);
   return (
-    <Card className="cardproduct" sx={{ width: "320px", margin: "20px",  padding: "5px" , background: `url(${backsimg})` }}>
-      <CardMedia sx={{ height: "320px" }} image={item.image} title={item.title} />
+    <Card
+      className="cardproduct"
+      sx={{
+        width: "320px",
+        margin: "20px",
+        padding: "5px",
+        background: `url(${backsimg})`,
+      }}
+    >
+      <CardMedia
+        sx={{ height: "320px" }}
+        image={item.image}
+        title={item.title}
+      />
       <CardContent onClick={() => navigate(`/products/${item.id}`)}>
-        <Typography style={{ color: "white" }} gutterBottom variant="h5" component="div">
+        <Typography
+          style={{ color: "white" }}
+          gutterBottom
+          variant="h5"
+          component="div"
+        >
           {item.title}
         </Typography>
-        <Typography style={{ color: "white" }} variant="body2" color="text.secondary">
+        <Typography
+          style={{ color: "white" }}
+          variant="body2"
+          color="text.secondary"
+        >
           {item.description}
         </Typography>
-        <Typography style={{ color: "white" }} variant="caption" color="text.secondary">
+        <Typography
+          style={{ color: "white" }}
+          variant="caption"
+          color="text.secondary"
+        >
           {item.price}
         </Typography>
       </CardContent>
       <CardActions>
-        {item.author == user ? (
-          <>
-            <Button style={{ color: "white" }} onClick={() => deleteProduct(item.id)} size="small">
-              Delete
-            </Button>
-          </>
-        ) : null}
-        {/* <FavoriteBorderIcon
-          color="disabled"
-          onClick={() => {
-            toggleLike(item.id);
-          }}
-        /> */}
+        <>
+          <Button
+            style={{ color: "black" }}
+            onClick={() => deleteProduct(item.id)}
+            size="small"
+          >
+            <DeleteIcon />
+          </Button>
+        </>
         {item.likes}
         {isLiked ? (
           <>
-            <FavoriteIcon 
+            <FavoriteIcon
               color="error"
               onClick={() => {
                 toggleLike(item.id);
@@ -69,6 +92,13 @@ export default function ProductCard({ item }) {
             }}
           />
         )}
+        <Button
+          style={{ color: "black" }}
+          onClick={() => navigate(`/editproduct/${item.id}`)}
+          size="small"
+        >
+          <EditIcon />
+        </Button>
       </CardActions>
     </Card>
   );
