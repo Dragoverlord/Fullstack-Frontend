@@ -11,59 +11,61 @@ import "../Products/ProductCard.css";
 import backsimg from "../storage/narko2.jpg";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { Box, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 export default function EditProduct() {
-  const {
-    deleteProduct,
-    toggleLike,
-    getOneProduct,
-    getCategories,
-    categories,
-    addProduct,
-    editProduct,
-  } = useProducts();
+  const { deleteProduct, toggleLike, categories, editProduct, oneProduct } =
+    useProducts();
   const [isLiked, setIsLiked] = useState(false);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-  const [product, setProduct] = useState({
+  const [editproduct, setEditProduct] = useState({
     title: "",
     description: "",
-    price: "",
-    category: 0,
+    price: 0,
+    category: "",
     image: "",
+    quantity: 0,
+    warning: "",
   });
 
   const handleInp = (e) => {
     if (e.target.name === "image") {
-      setProduct({
-        ...product,
+      setEditProduct({
+        ...editproduct,
         [e.target.name]: e.target.files[0],
       });
     } else {
-      setProduct({
-        ...product,
+      setEditProduct({
+        ...editproduct,
         [e.target.name]: e.target.value,
       });
     }
   };
 
   function handelSave() {
-    let editProduct = new FormData();
-    editProduct.append("title", product.title);
-    editProduct.append("description", product.description);
-    editProduct.append("price", product.price);
-    editProduct.append("category", product.category);
-    editProduct.append("image", product.image);
-    editProduct(editProduct);
+    let Editproduct = new FormData();
+    Editproduct.append("title", editproduct.title);
+    Editproduct.append("description", editproduct.description);
+    Editproduct.append("price", editproduct.price);
+    Editproduct.append("category", editproduct.category);
+    Editproduct.append("image", editproduct.image);
+    Editproduct.append("quantity", editproduct.quantity);
+    Editproduct.append("warning", editproduct.warning);
+
+    editProduct(Editproduct);
   }
   console.log(categories);
-  console.log(product);
+  console.log(editproduct);
 
   return (
     <Card
@@ -97,7 +99,7 @@ export default function EditProduct() {
           variant="filled"
           sx={{ m: 1, bgcolor: "white", color: "black" }}
           name="title"
-          value={product.title}
+          value={oneProduct.title}
           onChange={handleInp}
         />
         <TextField
@@ -106,7 +108,7 @@ export default function EditProduct() {
           variant="filled"
           sx={{ m: 1, bgcolor: "white", color: "black" }}
           name="description"
-          value={product.description}
+          value={oneProduct.description}
           onChange={handleInp}
         />
         <TextField
@@ -115,43 +117,44 @@ export default function EditProduct() {
           variant="filled"
           sx={{ m: 1, bgcolor: "white", color: "black" }}
           name="price"
-          value={product.price}
+          value={oneProduct.price}
           onChange={handleInp}
         />
+        <TextField
+          label="quantity"
+          fullWidth
+          variant="filled"
+          sx={{ m: 1, bgcolor: "white", color: "black" }}
+          name="quantity"
+          value={oneProduct.quantity}
+          onChange={handleInp}
+        />
+        <TextField
+          label="warning"
+          fullWidth
+          variant="filled"
+          sx={{ m: 1, bgcolor: "white", color: "black" }}
+          name="warning"
+          value={oneProduct.warning}
+          onChange={handleInp}
+        />
+        <TextField
+          label="category"
+          fullWidth
+          variant="filled"
+          sx={{ m: 1, bgcolor: "white", color: "black" }}
+          name="category"
+          value={oneProduct.category}
+          onChange={handleInp}
+        >
+          category
+        </TextField>
         <input
           type="file"
           name="image"
           onChange={handleInp}
           style={{ color: "white", margin: "20px 0" }}
         />
-        <FormControl fullWidth>
-          <InputLabel
-            id="select-label"
-            style={{
-              backgroundColor: "black",
-              color: "white",
-              margin: "20px 0",
-            }}
-          >
-            Category
-          </InputLabel>
-          <Select
-            value={product.category}
-            labelId="select-label"
-            name="category"
-            onChange={handleInp}
-            style={{ backgroundColor: "black", color: "white" }}
-          >
-            {categories?.map((item) => (
-              <MenuItem
-                sx={{ bgcolor: "white", color: "black" }}
-                value={item.id}
-              >
-                {item.title}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
         <Button
           sx={{ m: 1, bgcolor: "white", color: "black" }}
           variant="outlined"
