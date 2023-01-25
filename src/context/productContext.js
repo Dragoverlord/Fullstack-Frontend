@@ -36,25 +36,24 @@ function reducer(state = INIT_STATE, action) {
   }
 }
 
-const API = "http://34.173.115.25/api/v1";
+const API = "http://34.122.138.182";
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc0NjM0NzQ2LCJpYXQiOjE2NzQ2MzExNDUsImp0aSI6ImVjMTcyNzVhYjk4YTQzNDQ5NDljZDQ2MGE3MGYwNWUzIiwidXNlcl9pZCI6MX0.RHiPIqva3ijVSDF0cpg4kP-MkaO7G5U8EmshwLuL7nc
 
 const ProductContextProvider = ({ children }) => {
+
+  const token = JSON.parse(localStorage.getItem("token"));
+  const Authorization = `Bearer ${token.access}`;
+  const config = {
+    headers: {
+      Authorization,
+    },
+  };
 
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
   const navigate = useNavigate();
 
   const location = useLocation();
-
-  async function getCategories() {
-    try {
-      // const token
-      const res = await axios(`${API}/category/list/`);
-      dispatch({ type: "GET_CATEGORIES", payload: res.data.results });
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   async function addProduct(newProduct) {
     try {
@@ -65,7 +64,7 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios.post(`${API}/products/`, newProduct, config);
+      const res = await axios.post(`${API}/v1/api/product/`, newProduct, config);
       console.log(res);
     } catch (error) {
       console.log(error);
@@ -74,7 +73,7 @@ const ProductContextProvider = ({ children }) => {
 
   async function getProducts() {
     try {
-      const res = await axios(`${API}/products/${window.location.search}`);
+      const res = await axios(`${API}/v1/api/product/`, config);
       dispatch({ type: "GET_PRODUCTS", payload: res.data });
       console.log(res);
     } catch (error) {
@@ -91,7 +90,7 @@ const ProductContextProvider = ({ children }) => {
           Authorization,  
         },
       };
-      const res = await axios.delete(`${API}/products/${id}`, config);
+      const res = await axios.delete(`${API}/v1/api/product/${id}`, config);
       getProducts();
     } catch (error) {
       console.log(error);
@@ -107,7 +106,7 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios(`${API}/products/${id}/toggle_like/`, config);
+      const res = await axios(`${API}/review/likes/${id}`, config);
       console.log(res);
       getProducts();
     } catch (error) {
@@ -124,7 +123,7 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios(`${API}/products/${id}/`, config);
+      const res = await axios(`${API}/v1/api/product/${id}/`, config);
       console.log(res);
       dispatch({ type: "GET_ONE_PRODUCT", payload: res.data })
     } catch (error) {
@@ -146,7 +145,6 @@ const ProductContextProvider = ({ children }) => {
   };
 
   let values = {
-    getCategories,
     categories: state.categories,
     addProduct,
     getProducts,
