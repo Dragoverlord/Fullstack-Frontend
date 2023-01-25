@@ -13,16 +13,19 @@ import MenuItem from "@mui/material/MenuItem";
 import "../navbar/Navbar.css";
 import Logo from "../storage/logo.svg";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
+
+
 
 const pages = ["WARNING"];
 const settings = [
   { name: "Profile", link: "/profile", id: 1 },
   { name: "Account", link: "/loginpage", id: 2 },
-  { name: "Logout", link: "#", id: 3 },
-  { name: "Chats", link: "/chats", id: 4 },
+  { name: "Chats", link: "/chats", id: 3 },
 ];
 
 function NavbarCustom() {
+  const { logout } = useAuth;
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -188,12 +191,22 @@ function NavbarCustom() {
                   <Link
                     style={{ color: "black", textDecoration: "none" }}
                     to={setting.link}
+                    onClick={settings.func}
                     textAlign="center"
                   >
                     {setting.name}
                   </Link>
                 </MenuItem>
               ))}
+              <MenuItem>
+                <Link
+                  style={{ color: "black", textDecoration: "none" }}
+                  onClick={logout}
+                  textAlign="center"
+                >
+                  logout
+                </Link>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

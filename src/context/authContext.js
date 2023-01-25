@@ -67,8 +67,11 @@ const AuthContextProvider = ({ children }) => {
   }
 
   function logout() {
+    let token = JSON.parse(localStorage.removeItem("token"));
+    let username = JSON.parse(localStorage.removeItem("username"));
     localStorage.removeItem("token");
     localStorage.removeItem("username");
+    console.log(token , username);
     setUser("");
     navigate("/login");
   }
