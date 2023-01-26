@@ -89,6 +89,8 @@ export default function Cart() {
           ))}
         </TableBody>
       </Table>
+      <Button onClick={()=>cartCleaner()}>BUY PRODUCTS{cart?.totalPrice} $</Button>
+
     </TableContainer>
   );
 }
